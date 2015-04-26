@@ -1,6 +1,4 @@
-var i = 0;
-
-function Environment(canvas, music, renderFunc)
+function Environment(canvas, music, renderFunc, animateFunc, onKeyFunc)
 {
 	this.canvas = document.getElementById(canvas);
 
@@ -11,12 +9,16 @@ function Environment(canvas, music, renderFunc)
 	
 	this.engine = new BABYLON.Engine(this.canvas, true);
 	this.scene = new BABYLON.Scene(this.engine);
-	this.light = new BABYLON.PointLight("Omni", new BABYLON.Vector3(10, 10, -30), this.scene);
+	this.light = new BABYLON.PointLight("Omni", new BABYLON.Vector3(0, -10, -30), this.scene);
+	this.light.diffuse = new BABYLON.Color3(1, 0, 0);
+	this.light.specular = new BABYLON.Color3(1, 0, 0);
 	this.camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, new BABYLON.Vector3.Zero(), this.scene);
 	this.shapes = new Array();
 	this.music = document.getElementsByTagName("audio")[0];
 	this.music.src = music;
 	this.render = renderFunc;
+	this.animate = animateFunc;
+	this.onKeyDown = onKeyFunc;
 }
 
 Environment.prototype.setSkybox = 
@@ -54,8 +56,13 @@ function(id, x, y, z)
 Environment.prototype.exec =
 function ()
 {
-	this.render(this);
 	var scene = this.scene;
+	var animateFunc = this.animate;
+	var env = this;
+	this.render(this);
+	
+	window.addEventListener("keydown", 
+		this.onKeyDown, false);
 
 	this.scene.activeCamera.attachControl(canvas);
 
@@ -64,8 +71,10 @@ function ()
 		scene.render();
 	});
 
-    window.addEventListener("resize", function ()
+    window.addEventListener("resize", this.engine.resize);
+	
+	scene.registerBeforeRender(function () 
 	{
-		this.engine.resize();
+		animateFunc(env);
 	});
 }
