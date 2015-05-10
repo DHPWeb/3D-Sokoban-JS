@@ -4,15 +4,28 @@
 		<title> 3D Sokoban </title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="babylon_style.css" />
-		<script src="hand.js"></script>
 		<script src="babylon.js"></script>
-		<script type="text/javascript" src="environment.js"></script>
-		<script type="text/javascript" src="render.js"></script>
+
 	</head>
 	<body>
 		<audio autoplay loop>
 		  Votre navigateur ne supporte pas l'&eacute;l&eacute;ment <code>audio</code>.
 		</audio>
 		<canvas id="canvas"></canvas>
+		<div id="Pseudo" ></div>
+		<div id="score" >Score : 0 </div>
+		
+		<div id="gameOver" class="hidden">
+			<div id="gameOverText">Game Over</div>
+		</div>
+		<div id="newGame" >
+			<h1> 3D SOKOBAN : Nouvelle partie </h1>
+			<input type="text" placeholder="Entrer votre Pseudo" id="pseudoText" onchange="Maj()" /></br>
+			<a href="#" class="bouton" onclick="newGame()" > START! </a>
+		</div>
+		<script type="text/javascript" src="environment.js"></script>
+		<script type="text/javascript" src="render.js"></script>
+		<script type="text/javascript" src="Fonctions.js"></script>
+		<script src="hand.js"></script>
 	</body>
 </html>

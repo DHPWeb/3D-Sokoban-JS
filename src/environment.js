@@ -12,7 +12,17 @@ function Environment(canvas, music, renderFunc, animateFunc, onKeyFunc)
 	this.light = new BABYLON.PointLight("Omni", new BABYLON.Vector3(0, -10, -30), this.scene);
 	this.light.diffuse = new BABYLON.Color3(1, 0, 0);
 	this.light.specular = new BABYLON.Color3(1, 0, 0);
-	this.camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, new BABYLON.Vector3.Zero(), this.scene);
+	this.camera = new BABYLON.FreeCamera("Camera", new BABYLON.Vector3(15, 10, 11), this.scene);
+	this.camera.cameraRotation = new BABYLON.Vector2 (0.1, -0.157);
+	this.camera.applyGravity = false;
+	this.camera.checkCollisions = true;
+	this.camera.speed = 20;
+	this.camera.cameraAcceleration = 0,05; // how fast to move
+	this.camera.angularSensibility = 1000;
+
+
+	
+	
 	this.shapes = new Array();
 	this.music = document.getElementsByTagName("audio")[0];
 	this.music.src = music;
@@ -64,7 +74,7 @@ function ()
 	window.addEventListener("keydown", 
 		this.onKeyDown, false);
 
-	this.scene.activeCamera.attachControl(canvas);
+	//this.scene.activeCamera.attachControl(canvas);
 
     this.engine.runRenderLoop(function () 
 	{
@@ -78,3 +88,6 @@ function ()
 		animateFunc(env);
 	});
 }
+
+
+

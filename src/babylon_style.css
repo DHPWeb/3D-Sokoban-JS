@@ -1,8 +1,122 @@
-html, body, #canvas 
+html, body
 {
     width:100%;
     height:100%;
     padding:0;
     margin:0;
     overflow: hidden;
+
 }
+
+#canvas
+{
+	position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#Pseudo
+{
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    font-size: 3em;
+    color: white;
+    font-family: "Segoe UI";
+	
+}
+
+#score 
+{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    font-size: 3em;
+    color: white;
+    font-family: "Segoe UI";
+}
+
+#newGame {
+	
+	position : absolute;
+	left : 50%;
+	width : 600px;
+	margin-top : 25%;
+	margin-left : -300px;
+    color: black;
+    font-family: "Segoe UI";
+	border-width:2px;
+	border-style:solid;
+	border-color:black;
+	background-image:linear-gradient(#F5F3F3, #FFFFFF);
+	border-radius: 10px;
+}
+
+h1
+{
+	margin-left : 15px;
+	margin-right : 15px;
+	text-align : center;
+}
+
+#pseudoText
+{
+	text-transform: capitalize;
+	position : relative;
+	width : 400px;
+	left : 50%;
+	height : 50px;
+	margin-left : -200px;
+	margin-bottom : 10px;
+	text-align : center;
+	font-size : 20px
+}
+
+.bouton {
+	position : relative;
+	left : 50%;
+    width : 200px;
+	margin-left : -100px;
+	margin-bottom : 20px;
+	text-align : center;
+	display : inline-block;
+	border-radius : 7px;
+	font-size : 40px;
+	color : black;
+	box-shadow: 0 0 1px rgba( 0, 0, 0, 0.2), 0 -1px 0 rgba( 255, 255, 255, 0.1);
+	text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.3);
+	text-decoration:none; 
+	font-family: "Segoe UI";
+	
+}
+
+.bouton, .bouton:active {
+    background: #C41717;
+    background: linear-gradient( #EE4D4D, #C41717);
+	-moz-box-shadow: 10px 10px 20px 5px #9a0000;
+	-webkit-box-shadow: 10px 10px 20px 5px #9a0000;
+	-o-box-shadow: 10px 10px 20px 5px #9a0000;
+	box-shadow: 10px 10px 20px 5px #9a0000;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#9a0000, Direction=134, Strength=20);
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.bouton:hover {
+    background: #1EFF00;
+    background: -webkit-linear-gradient( #72E962, #27C312);
+    background: -moz-linear-gradient( #72E962, #27C312);
+    background: -ms-linear-gradient( #72E962, #27C312);
+    background: -o-linear-gradient( #72E962, #27C312);
+    background: linear-gradient( #72E962, #3327C3123);
+	-moz-box-shadow: 10px 10px 20px 5px #036400;
+	-webkit-box-shadow: 10px 10px 20px 5px #036400;
+	-o-box-shadow: 10px 10px 20px 5px #036400;
+	box-shadow: 10px 10px 20px 5px #036400;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#036400, Direction=134, Strength=20);
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
