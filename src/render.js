@@ -95,7 +95,7 @@ function renderLevel(tab, env)
 				env.shapes[index].rotation.x = 1.5707963267949;
 				index++;	
 				env.shapes.push(BABYLON.Mesh.CreateSphere("Sphere",20.0,1.0,env.scene));
-				env.setShapeTexture(index, "Textures/bloc1.jpg", 1.0);
+				env.setShapeTexture(index, "Textures/b.jpg", 1.0);
 				env.setShapePosition(index, i, 0, j);
 				bouleX[indice] = i;
 				bouleZ[indice] = j;
@@ -139,49 +139,81 @@ function checkDouble(ind, touche)
 		{
 			for (var i = 0; i< bouleIndex.length; i++)
 			{
-				if (i != ind)
+				if (i == ind)
+				{
+					// RIEN
+				}
+				else
 				{
 					if(((bouleX[ind]-1) == bouleX[i]) && (bouleZ[ind] == bouleZ[i]))
+					{
 						return false;
+						break;
+					}
 				}
 			}
 			return true;
+			break;
 		}
 		case 83: // S
 		{
 			for (var i = 0; i< bouleIndex.length; i++)
 			{
-				if (i != ind)
+				if (i == ind)
+				{
+					// RIEN
+				}
+				else
 				{
 					if(((bouleX[ind]+1) == bouleX[i]) && (bouleZ[ind] == bouleZ[i]))
+					{
 						return false;
+						break;
+					}
 				}
 			}
 			return true;
+			break;
 		}	
 		case 81: // S
 		{
 			for (var i = 0; i< bouleIndex.length; i++)
 			{
-				if (i != ind)
+				if (i == ind)
+				{
+					// RIEN
+				}
+				else
 				{
 					if(((bouleX[ind]) == bouleX[i]) && (bouleZ[ind]-1 == bouleZ[i]))
+					{
 						return false;
+						break;
+					}
 				}
 			}
 			return true;
+			break;
 		}	
 		case 68: // S
 		{
 			for (var i = 0; i< bouleIndex.length; i++)
 			{
-				if (i != ind)
+				if (i == ind)
+				{
+					// RIEN
+				}
+				else
 				{
 					if(((bouleX[ind]) == bouleX[i]) && (bouleZ[ind]+1 == bouleZ[i]))
+					{
 						return false;
+						break;
+					}
 				}
 			}
 			return true;
+			break;
 		}		
 	}
 }
@@ -209,17 +241,27 @@ function BoulesMoves (index, posX, posZ, touche)
 	{
 		case 90 : 
 			env.setShapePosition(index, posX-1, 0, posZ);
+			
 			return true;
-
+			break;
+			
 		case 83 :
 			env.setShapePosition(index, posX+1, 0, posZ);
+			
 			return true;
+			break;
+			
 		case 81 : 
 			env.setShapePosition(index, posX, 0, posZ-1);
+			
 			return true;
+			break;
+			
 		case 68 : 
 			env.setShapePosition(index, posX, 0, posZ+1);
+			
 			return true;
+			break;
 	}
 	return false;
 }
@@ -247,20 +289,24 @@ function checkPlayerBoule(touche)
 									bouleX[i]-=1.0;
 									valBal(i);
 									return true;
+									break;
 								}
 						}
 							else{
 								return false;
+								break;
 							}
 						}
 					
 					else
 					{
 						return false;
+						break;
 					}
 				}
 			}
 			return true;
+			break;
 		}
 		
 		case 83: // S
@@ -280,20 +326,24 @@ function checkPlayerBoule(touche)
 									bouleX[i]+=1.0;
 									valBal(i);
 									return true;
+									break;
 								}
 						}
 						else{
 							return false;
+							break;
 						}	
 
 					}
 					else
 					{
 						return false;
+						break;
 					}
 				}
 			}
 			return true;
+			break;
 		}
 		
 		case 81: // Q
@@ -314,19 +364,24 @@ function checkPlayerBoule(touche)
 									bouleZ[i]-=1.0;
 									valBal(i);
 									return true;
+									break;
 								}
 						}
 							else{
 								return false;
+								break;
 							}
+					
 					}
 					else
 					{
 						return false;
+						break;
 					}
 				}
 			}
-			return true;	
+			return true;
+			break;	
 		}
 		
 		case 68: // D
@@ -348,20 +403,24 @@ function checkPlayerBoule(touche)
 									bouleZ[i]+=1.0;
 									valBal(i);
 									return true;
+									break;
 								}
 						}
 						else{
 							return false;
+							break;
 						}
 					
 					}
 					else
 					{
 						return false;
+						break;
 					}
 				}
 			}
 			return true;
+			break;	
 		}
 		
 	}		
@@ -387,24 +446,30 @@ function checkCol(touche)
 
 			if(tabCollision[PlayerPos[1]-1][PlayerPos[2]] == '#')
 				return true;
+			break;
 		}
 		case 83 : // S
 		{
 
 			if(tabCollision[PlayerPos[1]+1][PlayerPos[2]] == '#')
-				return true;	
+				return true;
+			break;
+			
 		}	
 		case 81 : // Q
 		{
 
 			if(tabCollision[PlayerPos[1]][PlayerPos[2]-1] == '#')
 				return true;
+			break;
+			
 		}
 		case 68 : // D
 		{
 
 			if(tabCollision[PlayerPos[1]][PlayerPos[2]+1] == '#')
 				return true;
+			break;
 		}		
 	}
 	return false
@@ -422,7 +487,7 @@ function checkBouleCol (ind, touche)
 				if(tabCollision[bouleX[ind]-1][bouleZ[ind]] == '#')
 					return true;
 	
-						
+			break;			
 		}
 		
 		case 83: // S
@@ -431,7 +496,7 @@ function checkBouleCol (ind, touche)
 				if(tabCollision[bouleX[ind]+1][bouleZ[ind]] == '#')
 					return true;
 
-						
+			break;			
 		}
 		
 		case 81: // Q
@@ -439,7 +504,7 @@ function checkBouleCol (ind, touche)
 
 				if(tabCollision[bouleX[ind]][bouleZ[ind]-1.0] == '#')
 					return true;	
-						
+			break;			
 		}
 		
 		case 68: // D
@@ -448,7 +513,7 @@ function checkBouleCol (ind, touche)
 				if(tabCollision[bouleX[ind]][bouleZ[ind]+1] == '#')
 					return true;
 
-						
+			break;			
 		}
 	}
 	return false;
